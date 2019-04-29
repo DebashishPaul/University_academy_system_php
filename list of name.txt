@@ -1,0 +1,276 @@
+Student Application Form::::
+===========================
+Date_of_Admission
+first_name
+middle_name
+last_name
+father_name
+mother_name
+date_of_birth
+mobile1
+mobile2
+street_no1
+street_name1
+area1
+thana1
+district1
+street_no2
+street_name2
+area2
+thana2
+district2
+Type
+Institute_jsc
+board_jsc
+year_jsc
+result_jsc
+Institute_ssc
+board_ssc
+year_ssc
+result_ssc
+Institute_hsc
+board_hsc
+year_hsc
+result_hsc
+submit
+=================
+INSERT INTO `student application form` (`id`, `Date_of_Admission`, `first_name`, `middle_name`, `last_name`, `father_name`, `mother_name`, `date_of_birth`, `mobile1`, `mobile2`, `street_no1`, `street_name1`, `area1`, `thana1`, `district1`, `street_no2`, `street_name2`, `area2`, `thana2`, `district2`, `Type`, `Institute_jsc`, `board_jsc`, `year_jsc`, `result_jsc`, `Institute_ssc`, `board_ssc`, `year_ssc`, `result_ssc`, `Institute_hsc`, `board_hsc`, `year_hsc`, `result_hsc`) 
+VALUES (NULL, '2019-04-18', 'Tamim ', 'Iqbal', 'Khan', 'Jafar', 'Aysha', '2019-04-27', '01754258542', '01635486965', '412', 'A', 'bashundhara', 'bashundhara', 'Dhaka', '412', 'bashundhara', 'bashundhara', 'bashundhara', 'dhaka', 'Residential', 'cambrian college', 'dhaka', '2007', '4.00', 'cambrian college', 'dhaka', '2009', '5.00', 'cambrian college', 'dhaka', '2011', '5.00');
+
+
+
+<?php
+class apps{
+    
+    public $hostname = "localhost";
+    public $username = "root";
+    public $password = "";
+    public $database = "academic_information_system";
+    public $links;
+    
+    public function __construct(){
+      $this->links = mysqli_connect($this->hostname,$this->username,$this->password,$this->database);
+      if($this->links->connect_error){
+        echo "no connected";
+      }else{
+        echo "connected";
+      }
+    }
+    
+    public function insert($insert){
+      $insert = $this->links->query($insert);
+      if($insert){
+        throw new exception;
+      }
+    }
+
+
+  }
+
+
+
+if(isset($_POST['submit'])){
+    
+    
+    
+    $Date_of_Admission = $_POST['Date_of_Admission'];
+    $first_name = $_POST['first_name'];
+    $middle_name = $_POST['middle_name'];
+    $last_name = $_POST['last_name'];
+    $father_name = $_POST['father_name'];
+    $mother_name = $_POST['mother_name'];
+    $date_of_birth = $_POST['date_of_birth'];
+    $mobile1 = $_POST['mobile1'];
+    $mobile2=$_POST['mobile2'];
+    $street_no1=$_POST['street_no1'];
+    $street_name1=$_POST['street_name1'];
+    $area1=$_POST['area1'];
+    $thana1=$_POST['thana1'];
+    $district1=$_POST['district1'];
+    $street_no2=$_POST['street_no2'];
+    $street_name2=$_POST['street_name2'];
+    $area2=$_POST['area2'];
+    $thana2=$_POST['thana2'];
+    $district2=$_POST['district2'];
+    $Type=$_POST['Type'];
+    $Institute_jsc=$_POST['Institute_jsc'];
+    $board_jsc=$_POST['board_jsc'];
+    $year_jsc=$_POST['year_jsc'];
+    $result_jsc=$_POST['result_jsc'];
+    $Institute_ssc=$_POST['Institute_ssc'];
+    $board_ssc=$_POST['board_ssc'];
+    $year_ssc=$_POST['year_ssc'];
+    $result_ssc=$_POST['result_ssc'];
+    $Institute_hsc=$_POST['Institute_hsc'];
+    $board_hsc=$_POST['board_hsc'];
+    $year_hsc=$_POST['year_hsc'];
+    $result_hsc=$_POST['result_hsc'];
+    $error = 0;
+    $msg = "";
+    
+    if($Date_of_Admission == ""){
+      $error = $error+1;
+      $user_error = "<span style='color:#f00'>* trip type required</span>";
+      $msg .= "<p style='color:#f00'>* Username Required</p>";
+    }
+    if($first_name == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* password Required</p>";
+    }
+    if($middle_name == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* email Required</p>";
+    }
+    if($last_name == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* address Required</p>";
+    }
+    if($father_name == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($mother_name == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($date_of_birth == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($mobile1 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($mobile2 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($street_no1 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($street_name1 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($area1 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($thana1 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($district1 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($street_no2 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($street_name2 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($area2 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($thana2 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($district2 == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($Type == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($Institute_jsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($board_jsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($year_jsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($result_jsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($Institute_ssc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($board_ssc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($year_ssc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($result_ssc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($Institute_hsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($board_hsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($year_hsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($result_hsc == ""){
+      $error = $error+1;
+      $msg .= "<p style='color:#f00'>* Image Required</p>";
+    }
+    if($error == 0){
+    
+      $insert = "INSERT INTO academic_information_system VALUES(``, `Date_of_Admission`, `first_name`, `middle_name`, `last_name`, `father_name`, `mother_name`, `date_of_birth`, `mobile1`, `mobile2`, `street_no1`, `street_name1`, `area1`, `thana1`, `district1`, `street_no2`, `street_name2`, `area2`, `thana2`, `district2`, `Type`, `Institute_jsc`, `board_jsc`, `year_jsc`, `result_jsc`, `Institute_ssc`, `board_ssc`, `year_ssc`, `result_ssc`, `Institute_hsc`, `board_hsc`, `year_hsc`, `result_hsc`) ";
+      if($insert){
+        try{
+          $object = new apps;
+          $object->insert($insert);
+          echo " and Not inserted";
+        }catch(exception $e){
+          echo " and inserted";
+          
+        }
+      }
+    
+    
+    }else{
+      echo $msg;
+    }
+  }
+
+
+
+
+?>
+
+
+===================
+$Date_of_Admission
+$first_name
+$middle_name
+$last_name
+$father_name
+$mother_name
+$date_of_birth
+
+
+
